@@ -29,7 +29,7 @@
     "contains_non_public_inventory": false,
     "digest": "sha256:e6f3aeb9cab6a0bda599f4d3fbc51c440fab1648fd0e77e7c4efa8263fe6110b",
     "path": "owners/opto-sync.json",
-    "repository": "ORESoftware/project-registry"
+    "repository": "approved-private-registry"
   },
   "relationships": [
     {
