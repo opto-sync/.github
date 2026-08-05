@@ -1,10 +1,185 @@
 {
+  "$schema": "./repository-relationships.schema.json",
+  "audience": "public",
+  "generated": {
+    "complete_for_visibility": "public",
+    "generated_at": "2026-08-05T21:07:32Z",
+    "generator_version": "2026-08-04.1",
+    "inventory_digest": "sha256:6309bb66e50638b4ce93f8839245f3a0bb7c71cddf259ec07f884be5b9ebf9f7",
+    "managed_by": "ore-repository-relationship-rollout",
+    "omitted_repository_count": 0,
+    "private_repositories_omitted": false,
+    "source": "GitHub GraphQL repository inventory plus reviewed manual declarations"
+  },
+  "owner": {
+    "account_type": "organization",
+    "dotgithub_repository": "opto-sync/.github",
+    "github_id": "308481609",
+    "linear_project": {
+      "id": "88c60373-3e46-4a12-8f10-907d239d48f8",
+      "name": "github.com/opto-sync",
+      "team_id": "eb8ab169-5afe-4b6f-9cab-3f2aa3e887dc",
+      "url": "https://linear.app/denman/project/githubcomopto-sync-de6ba65bd559",
+      "workspace": "denman"
+    },
+    "login": "opto-sync",
+    "mapping_id": "context:opto-sync"
+  },
+  "private_registry": {
+    "contains_non_public_inventory": false,
+    "digest": "sha256:e6f3aeb9cab6a0bda599f4d3fbc51c440fab1648fd0e77e7c4efa8263fe6110b",
+    "path": "owners/opto-sync.json",
+    "repository": "ORESoftware/project-registry"
+  },
+  "relationships": [
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "opto-sync/.github",
+      "id": "sha256:75f927ce4239aeea3da7324636271536a739717eee920cbe2f4fa342afc84bb1",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "opto-sync/opto-sync-clients",
+      "type": "governs"
+    },
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "opto-sync/.github",
+      "id": "sha256:e774a810de8a1f0fd11ba871973fe98db32da874ad8a52fe2b246177a426d747",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "opto-sync/opto-sync-e2e",
+      "type": "governs"
+    },
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "opto-sync/.github",
+      "id": "sha256:788cf1bbfbe029e842f8e2d77d26d88292df3a0cf586af82449f1fba7f332de6",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "opto-sync/syncer.c",
+      "type": "governs"
+    },
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "opto-sync/.github",
+      "id": "sha256:6e95115742a1ec16e99d4e57196fad3fcb577f12d21b97f2f40285d38dd659f8",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "opto-sync/syncer.rs",
+      "type": "governs"
+    }
+  ],
+  "repositories": [
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "opto-sync/.github",
+      "github_id": "1324047707",
+      "name": ".github",
+      "owner": "opto-sync",
+      "roles": [
+        "community-health",
+        "governance",
+        "relationship-registry"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/opto-sync/.github",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "opto-sync/opto-sync-clients",
+      "github_id": "1311540747",
+      "name": "opto-sync-clients",
+      "owner": "opto-sync",
+      "roles": [
+        "clients"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/opto-sync/opto-sync-clients",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "opto-sync/opto-sync-e2e",
+      "github_id": "1310258857",
+      "name": "opto-sync-e2e",
+      "owner": "opto-sync",
+      "roles": [
+        "end-to-end-tests"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/opto-sync/opto-sync-e2e",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "opto-sync/syncer.c",
+      "github_id": "1310226639",
+      "name": "syncer.c",
+      "owner": "opto-sync",
+      "roles": [
+        "repository"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/opto-sync/syncer.c",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "opto-sync/syncer.rs",
+      "github_id": "1317778794",
+      "name": "syncer.rs",
+      "owner": "opto-sync",
+      "roles": [
+        "repository"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/opto-sync/syncer.rs",
+      "visibility": "public"
+    }
+  ],
   "schema_version": 1,
-  "organization": "opto-sync",
-  "generated_at": null,
-  "repositories": [],
-  "notes": [
-    "Populate from live GitHub inventory; do not infer unverified dependencies.",
-    "Repository-local manifests remain authoritative for exact dependency versions."
-  ]
+  "unresolved_hints": []
 }
