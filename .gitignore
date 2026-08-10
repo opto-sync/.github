@@ -2,3 +2,7 @@ tmp
 temp
 tmp/worktrees
 temp/worktrees
+
+# Python validation artifacts
+**/__pycache__/
+*.py[cod]
