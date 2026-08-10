@@ -2,3 +2,6 @@ tmp
 temp
 tmp/worktrees
 temp/worktrees
+marketing-site/.astro/
+marketing-site/dist/
+marketing-site/node_modules/
