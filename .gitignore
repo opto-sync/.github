@@ -6,3 +6,8 @@ temp/worktrees
 # Python validation artifacts
 **/__pycache__/
 *.py[cod]
+
+# Generated marketing site artifacts
+marketing-site/.astro/
+marketing-site/dist/
+marketing-site/node_modules/
