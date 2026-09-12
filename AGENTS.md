@@ -1,4 +1,4 @@
-# Account-level `.github` agent instructions
+# Opto-Sync organization agent instructions
 
 <!-- ore-org-baseline:begin -->
 These instructions apply to this repository. Repository-local instructions may add stricter requirements, but they must not weaken this baseline.
@@ -13,6 +13,15 @@ These instructions apply to this repository. Repository-local instructions may a
 ## Instruction discovery
 
 Lowercase `agents.md` is canonical. Read every applicable lowercase `agents.md` from the repository root toward the current working directory before editing. Uppercase `AGENTS.md` and provider-specific instruction files are compatibility mirrors and must remain aligned with the applicable lowercase policy.
+
+The canonical organization-wide file is
+[opto-sync/.github/agents.md](https://github.com/opto-sync/.github/blob/main/agents.md).
+Keep [opto-sync/.github/AGENTS.md](https://github.com/opto-sync/.github/blob/main/AGENTS.md)
+and [opto-sync/syncer.c/AGENTS.md](https://github.com/opto-sync/syncer.c/blob/main/AGENTS.md)
+byte-for-byte identical to it. In a repository that has only an uppercase
+`AGENTS.md`, read that compatibility mirror. Update all three files in the
+same coordinated change, and compare their contents before merging. Preserve
+organization governance and repository-local instructions when updating a mirror.
 
 ## Inspect before editing
 
@@ -83,3 +92,74 @@ This organization policy overrides generic feature-branch and worktree defaults 
 - Put every authorized worktree at `<repository-root>/tmp/worktrees/<name>`; from the repository root, use `./tmp/worktrees/<name>`. Never place worktrees beside repositories or organization directories.
 - Keep `tmp`, `temp`, `tmp/worktrees`, and `temp/worktrees` ignored in the repository-root `.gitignore`. Do not commit files from those directories.
 - Relocate or remove a worktree only when the operator explicitly requests it. Before removal, preserve and publish intended changes, verify its commit is represented on the target branch, and confirm there are no tracked, untracked, ignored-sensitive, or in-use files that must survive. Remove it with `git worktree remove <path>` without `--force`; never delete a worktree directory with `rm`.
+
+## Opto-Sync packages, dependencies, and consumers
+
+[Opto-Sync](https://github.com/opto-sync) is distributed through
+[Zed](https://github.com/zed-pkg) as an SDK/library used by other codebases.
+Changes to any Opto-Sync repository must account for the consumers of its
+engines, language bindings, shared contracts, and client libraries.
+
+### Versioning and compatibility
+
+Breaking changes are allowed when their impact is understood and the release
+version and migration instructions communicate that impact. Use these
+Opto-Sync project versioning rules:
+
+- **Major version bump:** large breaking changes to APIs, ABIs, wire contracts,
+  persisted data, or synchronization behavior.
+- **Minor version bump:** small, bounded breaking changes with an explicit
+  migration path; also use a minor bump for compatible feature additions.
+- **Patch version bump:** non-breaking fixes, minute changes, and compatible
+  maintenance work.
+
+These are the project's versioning conventions. Every breaking change,
+including a minor release, must be labeled in the release notes so consumers
+can assess compatibility before upgrading. Documentation-only changes do not
+require publishing a new SDK version.
+
+Before releasing an Opto-Sync change:
+
+- Identify affected downstream wrappers and the upstream Opto-Sync packages
+  they use. Check their actual Zed manifests, lockfiles, Git revisions, and
+  language-specific dependency declarations rather than assuming every
+  consumer depends directly on `syncer.c`.
+- Keep the released package version, published artifacts, bindings, and
+  release notes consistent. Record the old and new behavior and any API,
+  wire-format, persisted-data, or conflict-resolution migration.
+- Run the applicable engine, binding, contract, and downstream integration
+  checks. Record which consumers were exercised and any remaining coverage
+  gaps in the release PR.
+- Coordinate affected wrapper upgrades and dependency-pin changes, and
+  describe compatibility with older clients during a rolling upgrade.
+
+### Consumer organizations and wrapper repositories
+
+These organizations have product wrappers or documented integrations over
+Opto-Sync. Keep the list organized alphabetically by organization and review
+it when evaluating the impact of a release.
+
+- **3fa-app:** [3fa-app/3fa-app-sync](https://github.com/3fa-app/3fa-app-sync).
+- **agent-pontifex:** [agent-pontifex/agent-pontifex-sync](https://github.com/agent-pontifex/agent-pontifex-sync).
+- **apostille-me:** [apostille-me/apme-sync](https://github.com/apostille-me/apme-sync).
+- **athlet-o:** [athlet-o/athleto-sync](https://github.com/athlet-o/athleto-sync).
+- **daedalus-fab:** [daedalus-fab/daedalus-sync](https://github.com/daedalus-fab/daedalus-sync).
+- **declarative-migrations:** [declarative-migrations/declmig-sync](https://github.com/declarative-migrations/declmig-sync).
+- **embedded-alerts:** [embedded-alerts/eal-sync](https://github.com/embedded-alerts/eal-sync).
+- **evento-globolo:** [evento-globolo/evgl-sync](https://github.com/evento-globolo/evgl-sync).
+- **fiducia-cloud:** [fiducia-cloud/fiducia-sync](https://github.com/fiducia-cloud/fiducia-sync).
+- **file-tunnel:** [file-tunnel/ftnl-sync](https://github.com/file-tunnel/ftnl-sync).
+- **flags-2-env:** [flags-2-env/flags-2-env-sync](https://github.com/flags-2-env/flags-2-env-sync).
+- **hacker-house-medellin:** [hacker-house-medellin/hhm-sync](https://github.com/hacker-house-medellin/hhm-sync).
+- **happy-wakey:** [happy-wakey/happy-wakey-sync](https://github.com/happy-wakey/happy-wakey-sync).
+- **ores-otel:** [ores-otel/ores-otel-sync](https://github.com/ores-otel/ores-otel-sync).
+- **quaestor-ledger:** [quaestor-ledger/quaestor-sync](https://github.com/quaestor-ledger/quaestor-sync).
+- **sonus-auris:** [sonus-auris/sonus-auris-sync](https://github.com/sonus-auris/sonus-auris-sync).
+- **zed-pkg:** [zed-pkg/zed-sync](https://github.com/zed-pkg/zed-sync).
+
+**Zed needs particular attention:** `zed-pkg` provides the package manager
+that distributes Opto-Sync, while `zed-pkg/zed-sync` consumes Opto-Sync.
+Review both directions of this relationship for package-format, dependency
+resolution, bootstrap/install, publication, and synchronization changes.
+Avoid creating a bootstrap dependency cycle, and validate that a clean Zed
+installation can still install the intended Opto-Sync package versions.
